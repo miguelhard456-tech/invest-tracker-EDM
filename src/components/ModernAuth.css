@@ -1,0 +1,289 @@
+/* Modern Auth Styles - Adapted from Modern-Login with EDM Invest green theme */
+
+.modern-auth-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modern-auth-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 1001;
+}
+
+.modern-auth-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modern-auth-icon-btn:hover {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary));
+}
+
+.modern-auth-container {
+  background-color: hsl(var(--card));
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+}
+
+.modern-auth-container p {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  margin: 20px 0;
+}
+
+.modern-auth-container span {
+  font-size: 12px;
+  color: hsl(var(--muted-foreground));
+  margin: 12px 0;
+  display: block;
+}
+
+.modern-auth-container a {
+  color: hsl(var(--foreground));
+  font-size: 13px;
+  text-decoration: none;
+  margin: 15px 0 10px;
+}
+
+.modern-auth-container button {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modern-auth-container button:hover:not(:disabled) {
+  background-color: hsl(var(--primary) / 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px hsl(var(--primary) / 0.4);
+}
+
+.modern-auth-container button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modern-auth-container button.modern-hidden {
+  background-color: transparent;
+  border-color: hsl(var(--primary-foreground));
+  color: hsl(var(--primary-foreground));
+}
+
+.modern-auth-container button.modern-hidden:hover {
+  background-color: hsl(var(--primary-foreground) / 0.1);
+}
+
+.modern-auth-container form {
+  background-color: hsl(var(--card));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  height: 100%;
+}
+
+.modern-auth-container form h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-family: var(--font-heading);
+}
+
+.modern-auth-container input {
+  background-color: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
+  margin: 8px 0;
+  padding: 10px 15px;
+  font-size: 13px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+  color: hsl(var(--foreground));
+  transition: all 0.3s;
+}
+
+.modern-auth-container input:focus {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.1);
+}
+
+.modern-form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.modern-sign-in {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.modern-auth-container.active .modern-sign-in {
+  transform: translateX(100%);
+}
+
+.modern-sign-up {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.modern-auth-container.active .modern-sign-up {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s;
+}
+
+@keyframes move {
+  0%, 49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%, 100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+.modern-toggle-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  border-radius: 150px 0 0 100px;
+  z-index: 1000;
+}
+
+.modern-auth-container.active .modern-toggle-container {
+  transform: translateX(-100%);
+  border-radius: 0 150px 100px 0;
+}
+
+.modern-toggle {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  height: 100%;
+  color: hsl(var(--primary-foreground));
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.modern-auth-container.active .modern-toggle {
+  transform: translateX(50%);
+}
+
+.modern-toggle-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 30px;
+  text-align: center;
+  top: 0;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.modern-toggle-panel h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.modern-toggle-panel p {
+  font-size: 14px;
+  line-height: 20px;
+  color: hsl(var(--primary-foreground) / 0.9);
+}
+
+.modern-toggle-left {
+  transform: translateX(-200%);
+}
+
+.modern-auth-container.active .modern-toggle-left {
+  transform: translateX(0);
+}
+
+.modern-toggle-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.modern-auth-container.active .modern-toggle-right {
+  transform: translateX(200%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modern-auth-container {
+    min-height: 550px;
+  }
+  
+  .modern-form-container {
+    width: 100% !important;
+  }
+  
+  .modern-sign-in,
+  .modern-sign-up {
+    width: 100% !important;
+    left: 0 !important;
+  }
+  
+  .modern-toggle-container {
+    display: none;
+  }
+  
+  .modern-auth-container.active .modern-sign-in {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  
+  .modern-auth-container.active .modern-sign-up {
+    transform: translateX(0);
+  }
+}
